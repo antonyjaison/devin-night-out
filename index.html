@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+    <meta name="theme-color" content="#030611" />
+    <meta name="description" content="Earth's planetary defense needs 60 seconds to reboot. Hold the line." />
+    <title>60 Seconds to Impact</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <div id="app">
+      <div id="game"></div>
+
+      <div class="fx fx-vignette" aria-hidden="true"></div>
+      <div class="fx fx-damage" aria-hidden="true"></div>
+      <div class="fx fx-flash" aria-hidden="true"></div>
+      <div class="fx fx-scan" aria-hidden="true"></div>
+
+      <div id="hud" class="hud" aria-live="off">
+        <section class="hud-integrity" aria-label="Earth integrity">
+          <p class="hud-label"><span class="integrity-label">EARTH INTEGRITY</span></p>
+          <p class="integrity-value"><span data-integrity>100</span><small>%</small></p>
+          <div class="integrity-bar" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100">
+            <div class="integrity-trail"></div>
+            <div class="integrity-fill"></div>
+            <div class="integrity-ticks"><i></i><i></i><i></i><i></i></div>
+          </div>
+        </section>
+
+        <section class="hud-timer" aria-label="Defense reboot timer">
+          <p class="hud-label timer-label">PLANETARY DEFENSE REBOOT</p>
+          <p class="timer-value" data-timer>01:00</p>
+          <div class="reboot-rail"><div class="reboot-fill"></div></div>
+          <p class="imminent">DEFENSE ACTIVATION IMMINENT</p>
+        </section>
+
+        <section class="hud-stats" aria-label="Threats and score">
+          <p><span class="hud-label">THREATS</span><b data-threats>0</b></p>
+          <p><span class="hud-label">SCORE</span><b data-score>0</b></p>
+        </section>
+
+        <div class="storm-banner" role="alert">
+          <p class="storm-warning">WARNING</p>
+          <p class="storm-text">METEOR STORM DETECTED</p>
+        </div>
+
+        <div class="final-count" aria-hidden="true"></div>
+      </div>
+
+      <div class="countdown" aria-live="assertive"></div>
+
+      <main id="screen-start" class="screen screen-start">
+        <div class="start-status"><i class="status-dot"></i>PLANETARY DEFENSE SYSTEM OFFLINE</div>
+        <h1 class="title">
+          <span class="title-num">60</span>
+          <span class="title-word title-seconds">SECONDS</span>
+          <span class="title-word title-impact">TO IMPACT</span>
+        </h1>
+        <p class="start-brief">SURVIVE UNTIL THE SYSTEM REBOOTS</p>
+        <p class="start-how"><span>TARGET METEORS</span><span class="how-input">CLICK / TAP TO DESTROY</span></p>
+        <button class="btn btn-primary" data-action="start"><span>INITIATE DEFENSE</span></button>
+        <ul class="start-legend">
+          <li><i class="legend-normal"></i><b>Rock</b><span>1 hit</span></li>
+          <li><i class="legend-heavy"></i><b>Heavy</b><span>2 hits</span></li>
+          <li><i class="legend-energy"></i><b>Energy core</b><span>repairs Earth</span></li>
+        </ul>
+      </main>
+
+      <section id="screen-victory" class="screen screen-end screen-victory" hidden>
+        <p class="end-kicker">PLANETARY DEFENSE</p>
+        <h2 class="end-title">ONLINE</h2>
+        <p class="end-sub">EARTH SAVED</p>
+        <dl class="end-stats">
+          <div><dt>THREATS DESTROYED</dt><dd data-stat="destroyed">0</dd></div>
+          <div><dt>EARTH INTEGRITY</dt><dd data-stat="integrity">0%</dd></div>
+          <div class="stat-score"><dt>FINAL SCORE</dt><dd data-stat="score">0</dd></div>
+        </dl>
+        <button class="btn btn-primary" data-action="restart"><span>DEFEND AGAIN</span></button>
+      </section>
+
+      <section id="screen-defeat" class="screen screen-end screen-defeat" hidden>
+        <h2 class="end-title glitch" data-text="SIGNAL LOST">SIGNAL LOST</h2>
+        <p class="end-sub">PLANETARY DEFENSE FAILED</p>
+        <dl class="end-stats">
+          <div><dt>SURVIVED</dt><dd data-stat="survived">00:00</dd></div>
+          <div><dt>THREATS DESTROYED</dt><dd data-stat="destroyed">0</dd></div>
+          <div class="stat-score"><dt>SCORE</dt><dd data-stat="score">0</dd></div>
+        </dl>
+        <button class="btn btn-danger" data-action="restart"><span>TRY AGAIN</span></button>
+      </section>
+
+      <button class="sound-toggle" data-action="sound" aria-pressed="true" aria-label="Toggle sound">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path class="spk" d="M4 9h4l5-4v14l-5-4H4z" /><path class="wave" d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" /><path class="mute" d="M16 9l5 6M21 9l-5 6" /></svg>
+      </button>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
