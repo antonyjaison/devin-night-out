@@ -50,6 +50,10 @@ export class Ui {
 
   constructor(private handlers: UiHandlers, muted: boolean) {
     this.soundBtn.setAttribute('aria-pressed', String(!muted));
+    this.countdownEl.addEventListener('animationend', () => {
+      this.countdownEl.classList.remove('show');
+      this.countdownEl.textContent = '';
+    });
     document.addEventListener('click', (e) => {
       const target = (e.target as HTMLElement).closest<HTMLElement>('[data-action]');
       if (!target) return;

@@ -337,7 +337,7 @@ body.critical .integrity-fill {
   box-shadow: 0 0 10px var(--accent);
 }
 
-.imminent {
+.imminent-text {
   margin-top: 10px;
   font-size: 12px;
   font-weight: 700;
@@ -348,7 +348,7 @@ body.critical .integrity-fill {
   transition: opacity 300ms, transform 300ms;
 }
 
-body.imminent .imminent {
+body.imminent .imminent-text {
   opacity: 1;
   transform: none;
   animation: blink-soft 1s steps(2, jump-none) infinite;
@@ -763,7 +763,9 @@ body.storm .hud-stats::before {
 
 /* ---------- end screens ---------- */
 .screen-end {
-  gap: 14px;
+  gap: 12px;
+  justify-content: flex-start;
+  padding-top: calc(var(--safe-t) + clamp(28px, 9vh, 110px));
 }
 
 .end-kicker {
@@ -775,7 +777,7 @@ body.storm .hud-stats::before {
 }
 
 .end-title {
-  font-size: clamp(64px, 14vmin, 148px);
+  font-size: clamp(56px, 12vmin, 132px);
   font-weight: 700;
   line-height: 0.9;
   letter-spacing: 0.08em;
@@ -1053,6 +1055,15 @@ body.storm .hud-stats::before {
 
   .title-num {
     grid-row: auto;
+    font-size: 96px;
+  }
+
+  .title-word {
+    font-size: 32px;
+  }
+
+  .screen-start {
+    gap: 12px;
   }
 
   .start-legend {

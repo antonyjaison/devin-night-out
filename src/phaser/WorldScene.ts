@@ -327,7 +327,7 @@ export class WorldScene extends Phaser.Scene {
     const r = Phaser.Math.Clamp(Math.min(w * (portrait ? 0.26 : 0.16), h * 0.15), 56 * this.px, 170 * this.px);
     this.earth.r = r;
     this.earth.x = w / 2;
-    this.earth.y = h - r * (portrait ? 1.55 : 1.3);
+    this.earth.y = h - r * (portrait ? 1.45 : 1.18);
 
     const cover = Math.max(w, h) / 512;
     this.nebula.setPosition(w / 2, h / 2).setScale(cover * 1.3);
@@ -777,8 +777,8 @@ export class WorldScene extends Phaser.Scene {
       this.earthPulse(COLORS.scan, 1);
       this.earthPulse(0xffffff, 0.6);
       this.cameras.main.shake(180, 0.006);
-      this.cameras.main.zoomTo(1.04, 140, 'Quad.Out', true);
-      this.time.delayedCall(160, () => run === this.runId && this.cameras.main.zoomTo(1, 700, 'Cubic.Out', true));
+      this.cameras.main.zoomTo(1.04, 140, Phaser.Math.Easing.Quadratic.Out, true);
+      this.time.delayedCall(160, () => run === this.runId && this.cameras.main.zoomTo(1, 700, Phaser.Math.Easing.Cubic.Out, true));
       haptics.success();
 
       this.shieldWave = this.earth.r;
